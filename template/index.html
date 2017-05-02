@@ -8,11 +8,32 @@
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <meta content="email=no" name="format-detection">
-  <title>佰佳主题活动</title>
+  <title>佰佳高尔夫</title>
+  <meta name="share-title" content="{{share.title}}" id="share-title">
+  <meta name="share-summary" content="{{share.summary}}" id="share-summary">
+  <meta name="share-url" content="{{share.url}}" id="share-ur">
+  <meta name="share-image" content="{{share.image}}" id="share-image">
   <script type="text/javascript">
     var deviceWidth = document.documentElement.clientWidth;
     if (deviceWidth > 640) deviceWidth = 640;
     document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+    var setTitle = function (mes) {
+      document.title = mes.title;
+      document.querySelector('meta[name="share-title"]').setAttribute('content', mes.share_title)
+      document.querySelector('meta[name="share-summary"]').setAttribute('content', mes.share_summary)
+      document.querySelector('meta[name="share-url"]').setAttribute('content', mes.share_url)
+      document.querySelector('meta[name = "share-image"]').setAttribute('content', mes.share_image)
+      var iframe = document.createElement('iframe');
+      iframe.style.visibility = 'hidden';
+      iframe.style.width = '1px';
+      iframe.style.height = '1px';
+      iframe.onload = function () {
+        setTimeout(function () {
+          document.body.removeChild(iframe);
+        }, 0);
+      };
+      document.body.appendChild(iframe);
+    }
 
   </script>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
