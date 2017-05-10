@@ -41,9 +41,9 @@ class WxService {
     let _this = this;
     //分享到朋友圈
     wx.onMenuShareTimeline({
-      title: options.title, // 分享标题
+      title: options.title || _this.default_share.title, // 分享标题
       link: options.url, // 分享链接
-      imgUrl: options.image, // 分享图标
+      imgUrl: options.image || this.default_share.image, // 分享图标
       success: function () {
         // 用户确认分享后执行的回调函数
       },
