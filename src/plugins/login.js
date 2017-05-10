@@ -42,20 +42,25 @@ class User {
     }
   }
   getUserLoginStatus() {
+    let _this = this;
     //如果cookie中有user_uuid 和 token就检查登陆状态
-    if ($cookie.get('user_uuid') && $cookie.get('token')) {
-      let _params = {
-        user_uuid: $cookie.get('user_uuid'),
-        token: $cookie.get('token')
-      }
+    return new Promise(function (resolve, reject) {
+      if ($cookie.get('user_uuid') && $cookie.get('token')) {
+        let _params = {
+          user_uuid: $cookie.get('user_uuid'),
+          token: $cookie.get('token')
+        }
 
-      return this.ajax({
-        url: this.api_check_login_status,
-        method: 'get',
-        params: _params,
-        timeout: 10000
-      })
-    }
+        resolve(_this.ajax({
+          url: _this.api_check_login_status,
+          method: 'get',
+          params: _params,
+          timeout: 10000
+        }))
+      } else {
+        reject('您没有登录')
+      }
+    })
   }
   getUserInfo() {
     let _this = this;

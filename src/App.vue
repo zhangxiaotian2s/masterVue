@@ -30,5 +30,14 @@
   .paddingTop {
     padding-top: 0.92rem
   }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
+  }
 
 </style>

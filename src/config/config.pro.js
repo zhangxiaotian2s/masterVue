@@ -17,10 +17,12 @@ global.API = {
   CHECK_LOGIN_STATUS: '/v10/user/sessions/check_login.json',
   WX_CONFIG: '/v10/property/payments/wx_jssign_package.json'
 }
+global.BASE_URL = 'http://h5app.mastergolf.cn'
 //回app的地址
 global.BACK_URL = 'mastergolf://mastergolf.cn/startclient?action='
 
 global.WX_PAY_PAGE = "http://h5app.mastergolf.cn/pay/home/index.html#/promotepay"
+
 //登陆地址
 global.LOGIN_URL = {
   WX: 'http://home.mastergolf.cn/oauth2/wechat/login?source_url=',
@@ -30,6 +32,8 @@ global.LOGIN_URL = {
 // // staging 重设api 以及登陆地址
 if ((window.location.href.indexOf('staging') > -1) || (window.location.href.indexOf(':8080') > -1)) {
   global.ROOT_API = 'http://api.staging.mastergolf.cn';
+  global.BASE_URL = 'http://h5app.staging.mastergolf.cn'
+  global.BACK_URL = 'mastergolf://mastergolf.cn/startclient?action='
   global.LOGIN_URL = {
     WX: 'http://home.staging.mastergolf.cn/oauth2/wechat/login?source_url=',
     APP: 'mastergolf://mastergolf.cn/user/login?url='

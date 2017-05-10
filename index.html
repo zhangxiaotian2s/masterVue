@@ -13,6 +13,30 @@
     var deviceWidth = document.documentElement.clientWidth;
     if (deviceWidth > 640) deviceWidth = 640;
     document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+    let default_mes = {
+      title: '佰佳高尔夫',
+      share_title: '',
+      share_summary: '',
+      share_url: '',
+      share_image: ''
+    }
+    var setTitle = function (mes = default_mes) {
+      document.title = mes.title;
+      document.querySelector('meta[name="share-title"]').setAttribute('content', mes.share_title)
+      document.querySelector('meta[name="share-summary"]').setAttribute('content', mes.share_summary)
+      document.querySelector('meta[name="share-url"]').setAttribute('content', mes.share_url)
+      document.querySelector('meta[name = "share-image"]').setAttribute('content', mes.share_image)
+      var iframe = document.createElement('iframe');
+      iframe.style.visibility = 'hidden';
+      iframe.style.width = '1px';
+      iframe.style.height = '1px';
+      iframe.onload = function () {
+        setTimeout(function () {
+          document.body.removeChild(iframe);
+        }, 0);
+      };
+      document.body.appendChild(iframe);
+    }
 
   </script>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
