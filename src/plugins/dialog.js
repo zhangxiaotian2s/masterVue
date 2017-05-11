@@ -24,7 +24,7 @@ class dialog {
       position: 'middle'
     })
   }
-  alert(mes, showcallback, hidecallback) {
+  alert(mes, hidecallback, showcallback) {
     this.loadingHide()
     Vue.$vux.alert.show({
       title: mes.title || '提示',

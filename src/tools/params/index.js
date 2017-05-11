@@ -14,7 +14,8 @@ class Params {
       url.forEach((item) => {
         console.log(item)
         $cookie.set(item.split('=')[0], item.split('=')[1], {
-          path: '/'
+          path: '/',
+          expires: 1000 * 60 * 60
         })
       })
     }

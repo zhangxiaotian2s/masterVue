@@ -74,10 +74,10 @@ Cookie.set = function (name, value, options) {
   var date = expires;
   if (typeof date === 'number') {
     date = new Date();
-    date.setDate(date.getDate() + expires);
+    date.setTime(date.getTime() + expires);
   }
   if (date instanceof Date) {
-    text += '; expires=' + date.toUTCString();
+    text += '; expires=' + date.toGMTString();
   }
 
   // domain
