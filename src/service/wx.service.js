@@ -54,7 +54,7 @@ class WxService {
     //分享给好友
     wx.onMenuShareAppMessage({
       title: options.title || _this.default_share.title, // 分享标题
-      desc: options.des, // 分享描述
+      desc: options.desc, // 分享描述
       link: options.url, // 分享链接
       imgUrl: options.image || this.default_share.image, // 分享图标
       type: '', // 分享类型,music、video或link，不填默认为link
