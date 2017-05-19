@@ -67,7 +67,7 @@ class User {
     let _params = {
       user_uuid: $cookie.get('user_uuid')
     }
-    return _this.$http({
+    return _this.ajax({
       method: 'GET',
       url: _this.api_get_userinfo,
       params: _params
