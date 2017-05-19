@@ -47,8 +47,9 @@
           (function (arr) {
             arr.forEach(function (item) {
               var el = document.querySelector(item)
-              console.log(el)
-              el.parentNode.removeChild(el);
+              el.setAttribute('content', '')
+              // console.log(el)
+              // el.parentNode.removeChild(el);
             })
           })(arrEl)
         }
@@ -68,17 +69,16 @@
 
   </script>
 
-
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 </head>
 
 <body class="bk-gray">
   <div style="display:none" id="shareInfo">
-    <div name="share-title" content="" id="share-title"> </div>
-    <div name="share-summary" content="" id="share-summary"> </div>
-    <div name="share-url" content="" id="share-url"> </div>
-    <div name="share-image" content="" id="share-image"> </div>
+    <div name="share-title" content=" " id="share-title"> </div>
+    <div name="share-summary" content=" " id="share-summary"> </div>
+    <div name="share-url" content=" " id="share-url"> </div>
+    <div name="share-image" content=" " id="share-image"> </div>
   </div>
   <div id="app-box"></div>
   <!-- built files will be auto injected -->
