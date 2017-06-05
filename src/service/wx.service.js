@@ -9,6 +9,7 @@ class WxService {
     }
   }
   setConfig(url, apiList) {
+    $dialog.loading()
     let _params = {
       url: encodeURIComponent(url),
     }
@@ -18,6 +19,7 @@ class WxService {
       params: _params,
       timeout: 10000
     }).then((res) => {
+      $dialog.loadingHide()
       if (res.data.code === 200) {
         wx.config({
           debug: false,
@@ -28,6 +30,7 @@ class WxService {
           jsApiList: apiList
         })
       } else {
+        $dialog.loadingHide()
         $dialog.alert({
           content: '获取微信配置授权失败'
         })
