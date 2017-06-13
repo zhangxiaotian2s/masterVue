@@ -13,6 +13,7 @@
     beforeCreate() {
       //存储URL中所有的参数
       $params.saveAll()
+
     },
     data() {
       return {
