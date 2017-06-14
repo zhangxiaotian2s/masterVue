@@ -9,6 +9,7 @@ class WxService {
     }
   }
   setConfig(url, apiList) {
+    $dialog.loading()
     let _params = {
       url: encodeURIComponent(url),
     }
@@ -18,6 +19,7 @@ class WxService {
       params: _params,
       timeout: 10000
     }).then((res) => {
+      $dialog.loadingHide()
       if (res.data.code === 200) {
         wx.config({
           debug: false,
@@ -28,6 +30,7 @@ class WxService {
           jsApiList: apiList
         })
       } else {
+        $dialog.loadingHide()
         $dialog.alert({
           content: '获取微信配置授权失败'
         })
@@ -41,9 +44,9 @@ class WxService {
     let _this = this;
     //分享到朋友圈
     wx.onMenuShareTimeline({
-      title: options.title, // 分享标题
+      title: options.title || _this.default_share.title, // 分享标题
       link: options.url, // 分享链接
-      imgUrl: options.image, // 分享图标
+      imgUrl: options.image || this.default_share.image, // 分享图标
       success: function () {
         // 用户确认分享后执行的回调函数
       },
@@ -54,7 +57,7 @@ class WxService {
     //分享给好友
     wx.onMenuShareAppMessage({
       title: options.title || _this.default_share.title, // 分享标题
-      desc: options.des, // 分享描述
+      desc: options.desc, // 分享描述
       link: options.url, // 分享链接
       imgUrl: options.image || this.default_share.image, // 分享图标
       type: '', // 分享类型,music、video或link，不填默认为link
