@@ -13,7 +13,7 @@
     data() {
       return {
         //给顶部的浮动条留出位置
-        bool_out_app: global.BOOL_OUTAPP
+        bool_out_app: global.BOOL_OUT_APP
       }
     },
     beforeCreate() {

@@ -8,7 +8,7 @@ MasterOutBackApp.install = function (Vue, options) {
     el: document.createElement('div')
   })
 
-  if (global.BOOL_OUTAPP) {
+  if (global.BOOL_OUT_APP) {
     document.body.appendChild($vm.$el)
     Vue.prototype.$outBackApp = function (url) {
       $vm.backAppFn(url)

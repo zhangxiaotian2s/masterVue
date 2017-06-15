@@ -1,6 +1,7 @@
 let ua = navigator.userAgent.toLowerCase();
 //是否在app外
 global.BOOL_OUTAPP = ua.indexOf('mastergolf') === -1;
+global.BOOL_OUT_APP = ua.indexOf('mastergolf') === -1;
 //是否在微信外
 global.BOOL_OUT_WX = (global.BOOL_OUTAPP && ua.match(/MicroMessenger/i) != "micromessenger");
 //下载地址

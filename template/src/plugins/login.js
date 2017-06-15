@@ -75,7 +75,7 @@ class User {
   }
   //微信登陆处理 options为登陆传递的一些参数拼接
   login(options) {
-    if (global.BOOL_OUTAPP) {
+    if (global.BOOL_OUT_APP) {
       window.location.href = global.LOGIN_URL.WX + encodeURIComponent(options)
       //app外
     } else {
