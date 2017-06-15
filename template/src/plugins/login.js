@@ -1,4 +1,6 @@
 // 处理微信登陆
+import jsBase64 from 'js-base64'
+const Base64 = jsBase64.Base64;
 import $cookie from '@/tools/cookie';
 import $params from '@/tools/params';
 //依赖vue 里的的 global 数据 不再单独处理 全局使用
@@ -75,12 +77,12 @@ class User {
   }
   //微信登陆处理 options为登陆传递的一些参数拼接
   login(options) {
-    if (global.BOOL_OUT_APP) {
+    if (global.BOOL_OUTAPP) {
       window.location.href = global.LOGIN_URL.WX + encodeURIComponent(options)
       //app外
     } else {
       //app 内 去 native 的登陆页面
-      window.location.href = global.LOGIN_URL.APP
+      window.location.href = global.LOGIN_URL.APP + Base64.encode(options)
     }
   }
 }
