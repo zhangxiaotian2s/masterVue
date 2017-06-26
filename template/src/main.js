@@ -9,8 +9,10 @@ import * as filters from '@/filter'
 import '@/config/config.pro.js';
 import MasterOutBackApp from '@/plugins/master-out-back-app';
 
+
 //aoo 外顶部返回app 功能 不用刻意闪电
 Vue.use(MasterOutBackApp)
+
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -29,12 +31,24 @@ import {
   AjaxPlugin
 } from 'vux'
 
+
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
 Vue.use(LoadingPlugin)
 Vue.use(AjaxPlugin)
-
+//需要特殊的领奖红包弹出效果
+// import drawnAlertPlugin from '@/plugins/addPlugins/drawn-alert';
+// Vue.use(drawnAlertPlugin)
+//page 页面里的使用方法
+// showAlert() {
+//   this.$drawnalert.show({
+//     content: 'wo cao ni ma',
+//     hide: () => {
+//       alert('close')
+//     }
+//   })
+// }
 
 FastClick.attach(document.body)
 

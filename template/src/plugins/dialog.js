@@ -79,6 +79,17 @@ class dialog {
       Vue.$vux.loading.hide()
     }, time)
   }
+
+  // drawnAlert(options = {}, hideCallBack) {
+  //   console.log(Vue)
+  //   Vue.$drawnalert.show({
+  //     content: options.content,
+  //     hide: () => hideCallBack()
+  //   })
+  // }
+
+
+
 }
 const Dialog = new dialog()
 

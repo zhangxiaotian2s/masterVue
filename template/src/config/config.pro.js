@@ -33,7 +33,7 @@ global.LOGIN_URL = {
 // // staging 重设api 以及登陆地址
 if ((window.location.href.indexOf('staging') > -1) || (window.location.href.indexOf(':8080') > -1)) {
   global.ROOT_API = 'http://api.staging.mastergolf.cn';
-  global.BASE_URL = 'http://h5app.staging.mastergolf.cn'
+  global.BASE_URL = 'http://localhost:8080/#/'
   global.BACK_URL = 'mastergolf://mastergolf.cn/startclient?action='
   global.LOGIN_URL = {
     WX: 'http://home.staging.mastergolf.cn/oauth2/wechat/login?source_url=',
