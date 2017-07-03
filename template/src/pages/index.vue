@@ -23,10 +23,7 @@
         this.$user = new User(this.$http)
         let _this = this;
 
-        function* g() {
 
-
-        }
         //微信config
         // this.$wxService = new WxService(this.$http)
         // this.$wxService.setConfig(window.location.href, ['onMenuShareTimeline', 'onMenuShareAppMessage']);
