@@ -20,6 +20,10 @@ class Params {
       })
     }
   }
+  formatLocalUrl() {
+    //净化地址中的参数把第三方附加的参数去掉
+    window.history.replaceState('', '', window.location.href.replace(/\?.{0,}#/, '#'))
+  }
 }
 const param = new Params()
 export default param
