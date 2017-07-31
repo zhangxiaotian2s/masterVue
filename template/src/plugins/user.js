@@ -4,7 +4,10 @@ import $cookie from '@/tools/cookie';
 import $params from '@/tools/params';
 import $dialog from '@/plugins/dialog';
 //依赖vue 里的的 global 数据 不再单独处理 全局使用
-
+// if (!window.URLSearchParams) {
+import URLSearchParams from '@/tools/urlsearchparams';
+console.log(URLSearchParams)
+// }
 class User {
   constructor(ajax) {
     this.ajax = ajax;
@@ -17,12 +20,7 @@ class User {
       console.log(error)
     })
     if (_state.data.code === 401) {
-      if (global.BOOL_IN_WX) {
-        await this.wxLoginAction(options)
-      }
-      if (!global.BOOL_OUT_APP) {
-        options ? (window.location.href = global.LOGIN_URL.APP + base64.encode(options)) : (window.location.href = global.LOGIN_URL.APP);
-      }
+      await this.fastLogin(options)
     }
   }
   getUserLoginStatus() {
@@ -57,6 +55,16 @@ class User {
       params: _params
     })
   }
+  fastLogin(options) {
+    if (global.BOOL_IN_WX) {
+      return this.wxLoginAction(options)
+    }
+    if (!global.BOOL_OUT_APP) {
+      options ? (window.location.href = global.LOGIN_URL.APP + base64.encode(options)) : (window.location.href = global.LOGIN_URL.APP);
+    }
+
+  }
+
   checkLoginFn() {
     //如果cookie中有user_uuid 和 token就检查登陆状态
     if ($cookie.get('user_uuid') && $cookie.get('token')) {
