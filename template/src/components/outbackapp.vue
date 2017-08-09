@@ -1,3 +1,11 @@
+<template>
+  <div>
+    <div id="fix_top" class="clearfix" @click="backAppFn()">
+      <img :src='top_img_src' class="img-responsive" />
+    </div>
+  </div>
+</template>
+
 <script>
   export default {
     name: 'outbackapp',
@@ -8,37 +16,38 @@
         bool_ts_show: false
       }
     },
-    template: ` 
-    <div>
-      <div id="fix_top" class="clearfix" @click="backAppFn()">
-        <a href="javascript:void(0)"><img :src='top_img_src' class="img-responsive" /></a>
-      </div>
-      <div id="fix_bk" v-if="bool_ts_show" @click="toggleFixedTs(false)"></div>
-      <div id="fix_ts" class="clearfix" v-if="bool_ts_show" @click="toggleFixedTs(false)">
-        <a href="javascript:void(0)"><img :src='fixed_ts_img_src' class="img-responsive" /></a>
-      </div>
-  </div>`,
-    props: ['backurl'],
     mounted() {},
     methods: {
-      backAppFn(url = global.BACK_URL) {
-        if (global.BOOL_OUT_WX) {
-          window.location.href = url;
-          setTimeout(function () {
-            window.location.href = global.DOWN_APP_URL;
-          }, 2500)
-        } else {
-          this.toggleFixedTs(true)
+      backAppFn(url = global.BACK_APP_ACTION) {
+        if (global.BOOL_OUT_APP) {
+          console.log(url)
+          let _a = document.createElement('a');
+          _a.setAttribute('id', '_openAppBtn');
+          document.body.appendChild(_a);
+          let _link = 'https://ako30z.mlinks.cc/A0Ac'; //短链地址
+          let _btn = document.querySelector('#_openAppBtn');
+          let _options = [{
+            mlink: _link + '?action=' + url,
+            button: _btn,
+            inapp: true,
+            autoLaunchApp: true,
+            autoRedirectToDownloadUrl: false
+          }];
+
+          new Mlink(_options);
+          setTimeout(() => {
+            var e = document.createEvent('MouseEvent');
+            e.initEvent('click', false, false);
+            btn.dispatchEvent(e);
+            document.body.removeChild(_a);
+          }, 200)
         }
-      },
-      toggleFixedTs(bool) {
-        this.bool_ts_show = bool
       }
     }
   }
 
 </script>
-<style>
+<style lang="less" scoped>
   #fix_top {
     position: fixed;
     top: 0;
