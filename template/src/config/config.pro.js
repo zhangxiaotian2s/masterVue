@@ -1,11 +1,10 @@
 let ua = navigator.userAgent.toLowerCase();
 //是否在app外
-global.BOOL_OUTAPP = ua.indexOf('mastergolf') === -1;
 global.BOOL_OUT_APP = ua.indexOf('mastergolf') === -1;
 //是否在微信外
-global.BOOL_OUT_WX = (global.BOOL_OUTAPP && ua.match(/MicroMessenger/i) != "micromessenger");
+global.BOOL_OUT_WX = (global.BOOL_OUT_APP && ua.match(/MicroMessenger/i) != "micromessenger");
 //是否在微信内
-global.BOOL_IN_WX = (global.BOOL_OUTAPP && ua.match(/MicroMessenger/i) == "micromessenger");
+global.BOOL_IN_WX = (global.BOOL_OUT_APP && ua.match(/MicroMessenger/i) == "micromessenger");
 //下载地址
 global.DOWN_APP_URL = 'http://app.mastergolf.cn/get?from=share';
 
@@ -21,7 +20,7 @@ global.API = {
   WX_CONFIG: '/v10/property/payments/wx_jssign_package.json',
   WX_LOGIN: '/v10/user/oauth2/wechat.json'
 }
-global.APPID = "wx50828a35c9d2010b";
+global.APPID = "wx782a4d28ea8b5a59";
 global.BASE_URL = 'http://h5app.mastergolf.cn';
 //回app的地址
 global.BACK_URL = 'mastergolf://mastergolf.cn/startclient?action=';
