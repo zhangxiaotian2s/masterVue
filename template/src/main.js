@@ -1,11 +1,11 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import FastClick from 'fastclick'
-import VueRouter from 'vue-router'
-import App from './App'
+import Vue from 'vue';
+require('@/tools/fastclick/index.js');
+import VueRouter from 'vue-router';
+import App from './App';
 import routes from '@/router/index';
-import * as filters from '@/filter'
+import * as filters from '@/filter';
 import '@/config/config.pro.js';
 import MasterOutBackApp from '@/plugins/master-out-back-app';
 
