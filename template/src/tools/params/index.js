@@ -1,22 +1,18 @@
 import $cookie from '@/tools/cookie'
+import URLSearchParams from '@/tools/urlsearchparams';
 class Params {
+  constructor() {
+    this.params = new URLSearchParams(window.location.href.split('?').pop());
+
+  }
   get(name) {
-    let result = new RegExp('[\\?\&\#]' + name + '=([^\?\&\#]*)').exec(window.location.href);
-    if (!result) {
-      return undefined;
-    }
-    return result[1] || 0;
+    return this.params.get(name)
   }
   saveAll() {
-    let url = window.location.href;
-    if (url.indexOf('?') > -1) {
-      url = url.split('?').pop().split('&');
-      url.forEach((item) => {
-        console.log(item)
-        $cookie.set(item.split('=')[0], item.split('=')[1], {
-          path: '/',
-          expires: 1000 * 60 * 60
-        })
+    for (let _param of this.params.entries()) {
+      $cookie.set(_param[0], _param[1], {
+        path: '/',
+        expires: 1000 * 60 * 60
       })
     }
   }

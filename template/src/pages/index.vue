@@ -24,9 +24,7 @@
         //微信config
         // this.$wxService = new WxService(this.$http)
         // this.$wxService.setConfig(window.location.href, ['onMenuShareTimeline', 'onMenuShareAppMessage']);
-        $dialog.confirm({
-          content: 'xxxxxx'
-        })
+
       })
     },
     methods: {
